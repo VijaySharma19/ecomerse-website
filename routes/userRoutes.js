@@ -1,5 +1,5 @@
 const route = require("express").Router()
-const { createUser,authenticateUser } = require("../db/users")
+const { createUser,authenticateUser,updatedCartItems } = require("../db/users")
 
 route.post('/login',async (req,res)=>{
     await authenticateUser(req.body.emailId,req.body.password).then((data)=>{
@@ -7,7 +7,8 @@ route.post('/login',async (req,res)=>{
             id: data._id,
             username: data.username,
             emailId : data.emailId,
-            contactNo : data.contactNo
+            contactNo : data.contactNo,
+            products : data.products
         }
         res.status(202).send(result)
     }).catch((err)=>{
@@ -22,9 +23,17 @@ route.post('/signup',async(req,res)=>{
     const password= req.body.password;
     const contact= req.body.contact;
     await createUser(username,emailId,contact,password).then(result=>{
-        res.status(201).redirect('/api/users/login')
+        res.status(201).send('Account created')
     }).catch(err=>{
         res.status(406).send(err)
+    })
+})
+route.post('/addToCart',async(req,res)=>{
+    await updatedCartItems(req.body.userId,req.body.productId).then(()=>{
+        res.status(202).send("Added successfully to the cart")
+    }).catch((err)=>{
+        err.name=''
+        res.status(409).send({Error : err.toString()})
     })
 })
 

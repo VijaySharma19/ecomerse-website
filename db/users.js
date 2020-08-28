@@ -11,7 +11,10 @@ async function createUser(username,emailId,contactNo,password){
         username : username,
         emailId : emailId,
         contactNo : contactNo,
-        password : password
+        password : password,
+        products : [
+
+        ]
     })
 
     return user;
@@ -23,24 +26,6 @@ async function authenticateUser(emailId,password){
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
-    // return await users.find({emailId : emailId}).toArray().then(async (user)=>{
-
-    //     return await new Promise((resolve,reject)=>{
-    //         if(user==0){
-    //             console.log("rejected with no user")
-    //             reject(new Error("No such User Exist"))
-    //         }
-    //         else{
-    //             if(user[0].password===password){
-    //                 resolve(user[0]);
-    //             }
-    //             else{
-    //                 console.log("rejected with Incorrect password")
-    //                 reject(new Error ('Incorrect password'));
-    //             }
-    //         }
-    //     })
-    // }).catch(err=>  err)
 
     return await users.find({emailId : emailId}).toArray().then((user)=>{
         if(user==0){
@@ -62,14 +47,42 @@ async function authenticateUser(emailId,password){
    
 }
 
-// authenticateUser('vj@gmail.com','itsm').then(data=>{
-//     console.log(data)
-// }).catch((err)=>{
-//     console.log(err,"outside")
-// })
+async function updatedCartItems(userId,productId){
+    const client = await MongoClient.connect(MongoUrl);
+    const ecomerseDb = await client.db(dbName);
+    const users = await ecomerseDb.collection('users');
+
+    const user= users.find({'_id': ObjectID(userId)}).toArray()
+    user.then((data)=>{
+        const query = {'_id':ObjectID(userId)};
+        const newProduct = {
+            id : ObjectID(productId)
+        }
+        const productList = [...data[0].products,newProduct];
+        const newValues={ $set : { products : productList } };
+        users.updateOne(query,newValues,(err,res)=>{
+            if(err)
+            throw err;
+        })
+    })
+    user.catch(err=>{throw err})
+}
+
+
+
+async function deleteAllUsers(){
+    const client = await MongoClient.connect(MongoUrl);
+    const ecomerseDb = await client.db(dbName);
+    const users = await ecomerseDb.collection('users');
+    await users.deleteMany()
+    console.log("users deleted")
+}
+
+
 
 
 exports= module.exports={
     authenticateUser,
-    createUser
+    createUser,
+    updatedCartItems,
 }
