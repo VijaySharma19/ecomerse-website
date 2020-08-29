@@ -5,8 +5,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use('/api/products',require("./routes/productRoutes").route)
-app.use('/api/users',require("./routes/userRoutes").route)
+app.use('/products',require("./routes/productRoutes").route)
+app.use('/users',require("./routes/userRoutes").route)
 
 app.get("/",(req,res)=>{
     res.send("hello")
