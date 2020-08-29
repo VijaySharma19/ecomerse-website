@@ -1,6 +1,9 @@
 const {MongoClient , ObjectID} = require("mongodb");
+const { getProductById } = require('./products')
+
 const MongoUrl= "mongodb://localhost:27017";
 const dbName = "ecomerseDb";
+
 
 async function createUser(username,emailId,contactNo,password){
     const client = await MongoClient.connect(MongoUrl);
@@ -78,11 +81,21 @@ async function deleteAllUsers(){
     console.log("users deleted")
 }
 
+async function showCartItems(userId){
+    const client = await MongoClient.connect(MongoUrl);
+    const ecomerseDb = await client.db(dbName);
+    const users = await ecomerseDb.collection('users');
 
+    const user = await users.findOne({'_id':ObjectID(userId)})
+    const productList = getProductById(user.products) 
+    return productList
+
+}
 
 
 exports= module.exports={
     authenticateUser,
     createUser,
     updatedCartItems,
+    showCartItems
 }

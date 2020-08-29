@@ -1,5 +1,5 @@
 const route = require("express").Router()
-const { createUser,authenticateUser,updatedCartItems } = require("../db/users")
+const { createUser,authenticateUser,updatedCartItems,showCartItems } = require("../db/users")
 
 route.post('/login',async (req,res)=>{
     await authenticateUser(req.body.emailId,req.body.password).then((data)=>{
@@ -34,6 +34,14 @@ route.post('/addToCart',async(req,res)=>{
     }).catch((err)=>{
         err.name=''
         res.status(409).send({Error : err.toString()})
+    })
+})
+route.post('/showCartItems',async (req,res)=>{
+    await showCartItems(req.body.userId).then((result)=>{
+        res.status(200).send(result)
+    }).catch((err)=>{
+        err.name='';
+        res.status(400).send({Error : err.toString()})
     })
 })
 
