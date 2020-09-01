@@ -5,7 +5,7 @@ export class ProductList extends Component {
     render() {
         return (this.props.productList.map((product)=>{
             return <ProductItem
-                key={product.id}
+                key={product._id}
                 product = {product}
             />
         }))

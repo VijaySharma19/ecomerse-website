@@ -5,6 +5,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+app.use('/',express.static(__dirname+'/client/public'))
+
 app.use('/products',require("./routes/productRoutes").route)
 app.use('/users',require("./routes/userRoutes").route)
 
