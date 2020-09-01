@@ -9,26 +9,39 @@ import Product from './components/mainContent/Products/products'
 import MyCart from './components/mainContent/myCart/MyCart'
 import Login from './components/mainContent/login/Login'
 import SignUp from './components/mainContent/signup/SignUp'
+import axios from 'axios';
 
 export class App extends Component {
   
     constructor(props){
       super(props);
       this.state ={
-        user : {
-          id : '',
-          username : '',
-          emailId : '',
-          contactNo : '',
-          avatar : '',
-          products : [],
-          isLoggedIn : false
-        }
+        user : {}
       };
       this.addUser= this.addUser.bind(this)
       this.removeUser =this.removeUser.bind(this)
     }
   
+  componentDidMount(){
+    axios.get('/users').then(res=>{
+      if(res.data.error){
+        console.log(res.data.error)
+      }
+      else{
+        this.setState({user : {
+          id : res.data.id,
+          username : res.data.username,
+          emailId : res.data.emailId,
+          contactNo : res.data.contactNo,
+          products : res.data.products,
+          avatar : res.data.avatar,
+          isLoggedIn : true
+    
+        }})
+        console.log(this.state.user)
+      }
+    }).catch(err=>console.log(err))
+  }
 
   addUser(id,username,emailId,contactNo,products,avatar){
     this.setState({user : {
@@ -41,11 +54,14 @@ export class App extends Component {
       isLoggedIn : true
 
     }})
-    console.log(this.state.user)
+
   }
   
   removeUser(){
     this.setState({user : {}})
+    axios.get('/users/logout').then(res=>{
+      console.log(res.data)
+    })
   }
 
   render() {

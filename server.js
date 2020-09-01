@@ -1,6 +1,13 @@
 const express = require('express')
 const app = express()
 
+const session = require("express-session")
+app.use(session({
+    resave : true,
+    saveUninitialized:true,
+    secret:"sbdckjshfiuwgdws863"
+}))
+
 //body parser
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))

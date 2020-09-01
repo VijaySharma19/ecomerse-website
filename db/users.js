@@ -24,6 +24,15 @@ async function createUser(username,emailId,contactNo,password){
 
 }
 
+async function getUserById (id){
+    const client = await MongoClient.connect(MongoUrl);
+    const ecomerseDb = await client.db(dbName);
+    const users = await ecomerseDb.collection('users');
+    
+    const user = users.findOne({"_id" : ObjectID(id)})
+    return user;
+}
+
 async function authenticateUser(emailId,password){
     const client = await MongoClient.connect(MongoUrl);
     const ecomerseDb = await client.db(dbName);
@@ -93,9 +102,12 @@ async function showCartItems(userId){
 }
 
 
+
+
 exports= module.exports={
     authenticateUser,
     createUser,
     updatedCartItems,
-    showCartItems
+    showCartItems,
+    getUserById
 }
