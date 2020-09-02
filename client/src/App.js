@@ -38,12 +38,12 @@ export class App extends Component {
           isLoggedIn : true
     
         }})
-        console.log(this.state.user)
       }
-    }).catch(err=>console.log(err))
+    }).catch(err=>console.log(err.response.data))
   }
 
   addUser(id,username,emailId,contactNo,products,avatar){
+
     this.setState({user : {
       id : id,
       username : username,
@@ -90,7 +90,7 @@ export class App extends Component {
             path='/users/signup' 
             component={()=><SignUp 
                               user={this.state.user} 
-                              updateUser={this.updateUser}
+                              addUser={this.addUser}
                             ></SignUp>}
           ></Route>
           

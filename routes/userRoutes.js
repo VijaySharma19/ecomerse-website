@@ -14,7 +14,7 @@ route.get("/",async(req,res)=>{
             res.status(202).send(result)
         }).catch((err)=>{
             err.name=''
-            res.status(403).send({Error:err.toString()})
+            res.status(403).send(err.toString())
         })
     }
     else{
@@ -40,7 +40,7 @@ route.post('/login',async (req,res)=>{
         res.status(202).send(result)
     }).catch((err)=>{
         err.name=''
-        res.status(403).send({Error:err.toString()})
+        res.status(403).send(err.toString())
     })
 })
 
@@ -49,11 +49,19 @@ route.post('/signup',async(req,res)=>{
     const emailId= req.body.emailId;
     const password= req.body.password;
     const contact= req.body.contact;
-    await createUser(username,emailId,contact,password).then(result=>{
+    await createUser(username,emailId,contact,password).then(data=>{
+        const result ={
+            id: data.ops[0]._id,
+            username: data.ops[0].username,
+            emailId : data.ops[0].emailId,
+            contactNo : data.ops[0].contactNo,
+            products : data.ops[0].products
+        }
         req.session.userId = result.id;
-        res.status(201).send('Account created')
+        res.status(201).send(result)
     }).catch(err=>{
-        res.status(406).send(err)
+        err.name=''
+        res.status(406).send(err.toString())
     })
 })
 route.post('/addToCart',async(req,res)=>{
@@ -61,7 +69,7 @@ route.post('/addToCart',async(req,res)=>{
         res.status(202).send("Added successfully to the cart")
     }).catch((err)=>{
         err.name=''
-        res.status(409).send({Error : err.toString()})
+        res.status(409).send(err.toString())
     })
 })
 route.post('/showCartItems',async (req,res)=>{
@@ -69,7 +77,7 @@ route.post('/showCartItems',async (req,res)=>{
         res.status(200).send(result)
     }).catch((err)=>{
         err.name='';
-        res.status(400).send({Error : err.toString()})
+        res.status(400).send(err.toString())
     })
 })
 
