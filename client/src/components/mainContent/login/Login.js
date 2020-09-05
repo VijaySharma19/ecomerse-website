@@ -46,11 +46,13 @@ export class Login extends Component {
 
                 //set state.user
                 this.props.addUser(id,username,emailId,contactNo,products,avatar)
+                this.props.history.push("/")
                 }
 
         }).catch(err=>{
             this.setState({error : err.response.data})
         })
+        
         
         
     }

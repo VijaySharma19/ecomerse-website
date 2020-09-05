@@ -68,28 +68,41 @@ export class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Header 
+          {/* <Header 
+            {...this.props}
             user = {this.state.user} 
-            addUser={this.addUser}
             removeUser= {this.removeUser}
-          ></Header>
+          ></Header> */}
+          <Route render={(props)=><Header 
+                                    {...props}
+                                    user = {this.state.user} 
+                                    addUser={this.addUser}
+                                    removeUser= {this.removeUser}
+                                  ></Header>
+          }></Route>
+          
           <Switch>
+            
             <Route exact path='/' component={Home}></Route>
+
             <Route path='/products' component={Product}></Route>
+
             <Route 
               path='/users/showCartItems' 
               component={()=><MyCart user={this.state.user}></MyCart>}
             ></Route>
             <Route 
               path='/users/login' 
-              component={()=><Login 
+              render={(props)=><Login 
+                                  {...props}
                                   user={this.state.user} 
                                   addUser={this.addUser}
                               ></Login>}>
             </Route>
             <Route 
               path='/users/signup' 
-              component={()=><SignUp 
+              render={(props)=><SignUp
+                                {...props} 
                                 user={this.state.user} 
                                 addUser={this.addUser}
                               ></SignUp>}

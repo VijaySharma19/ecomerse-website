@@ -10,6 +10,7 @@ export class Header extends Component {
     logout(e){
         e.preventDefault()
         this.props.removeUser()
+        this.props.history.push("/")
     }
 
 
@@ -43,7 +44,7 @@ export class Header extends Component {
         if(this.props.user.isLoggedIn){
             showUserName=<React.Fragment  >
                             
-                                <span className="form-control  mr-sm-2" >Hello! {this.props.user.username} </span>
+                                <span className=" mr-sm-2" >Hello! {this.props.user.username} </span>
                                 <button className="btn btn-outline-success my-2 my-sm-0" onClick = {this.logout}>Logout</button>
                                 
                         </React.Fragment>
@@ -66,12 +67,13 @@ export class Header extends Component {
                                 <Link className="nav-link" to='/products'>Products</Link>
                             </li>
                             {LoggedInDependent}
-                            
-                        </ul>
-                        <div className=" form-inline  my-2 my-lg-0">
+                            <div className=" float-sm-right">
                                 {showUserName}
                             </div>
+                        </ul>
+                        
                     </div>
+                    
                 </nav>
             </React.Fragment>
         )

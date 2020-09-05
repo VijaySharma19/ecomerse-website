@@ -58,6 +58,7 @@ export class SignUp extends Component {
                 //set state.user
                 this.props.addUser(id,username,emailId,contactNo,products,avatar)
             })
+            this.props.history.push("/")
         }
         else{
             return
