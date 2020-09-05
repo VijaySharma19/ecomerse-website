@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router , Route} from 'react-router-dom'
+import {BrowserRouter as Router , Route , Switch } from 'react-router-dom'
 import './App.css'
 
 // Components import
@@ -73,26 +73,28 @@ export class App extends Component {
             addUser={this.addUser}
             removeUser= {this.removeUser}
           ></Header>
-          <Route exact path='/' component={Home}></Route>
-          <Route path='/products' component={Product}></Route>
-          <Route 
-            path='/users/showCartItems' 
-            component={()=><MyCart user={this.state.user}></MyCart>}
-          ></Route>
-          <Route 
-            path='/users/login' 
-            component={()=><Login 
+          <Switch>
+            <Route exact path='/' component={Home}></Route>
+            <Route path='/products' component={Product}></Route>
+            <Route 
+              path='/users/showCartItems' 
+              component={()=><MyCart user={this.state.user}></MyCart>}
+            ></Route>
+            <Route 
+              path='/users/login' 
+              component={()=><Login 
+                                  user={this.state.user} 
+                                  addUser={this.addUser}
+                              ></Login>}>
+            </Route>
+            <Route 
+              path='/users/signup' 
+              component={()=><SignUp 
                                 user={this.state.user} 
                                 addUser={this.addUser}
-                            ></Login>}>
-          </Route>
-          <Route 
-            path='/users/signup' 
-            component={()=><SignUp 
-                              user={this.state.user} 
-                              addUser={this.addUser}
-                            ></SignUp>}
-          ></Route>
+                              ></SignUp>}
+            ></Route>
+          </Switch>
           
  
         </Router>
