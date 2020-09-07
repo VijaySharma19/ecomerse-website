@@ -2,7 +2,7 @@ const {MongoClient , ObjectID} = require("mongodb");
 const MongoUrl= "mongodb://localhost:27017";
 const dbName = "ecomerseDb";
 
-async function addProduct(title,price,despcription){
+async function addProduct(title,price,despcription,avatar,category){
     const client = await MongoClient.connect(MongoUrl);
     const ecomerseDb = await client.db(dbName);
     const products = await ecomerseDb.collection('products');
@@ -10,7 +10,9 @@ async function addProduct(title,price,despcription){
     const product = await products.insertOne({
         title : title,
         price : price,
-        despcription : despcription
+        despcription : despcription,
+        avatar: avatar,
+        category:category
     })
     return product;
 }
@@ -48,6 +50,15 @@ async function getProductById (idArray){
         }).catch(err=>{throw err})
     });
     return result[arrayLength-1];
+}
+
+async function deleteAllProducts(){
+    const client = await MongoClient.connect(MongoUrl);
+    const ecomerseDb = await client.db(dbName);
+    const products = await ecomerseDb.collection('products');
+
+    const result = await products.deleteMany({})
+    return result;
 }
 
 

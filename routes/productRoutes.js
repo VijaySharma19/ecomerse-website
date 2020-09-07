@@ -15,7 +15,9 @@ route.post("/",async(req,res)=>{
     const  title = req.body.title;
     const price = req.body.price;
     const description =req.body.description
-    await addProduct(title,price,description).then((result)=>{
+    const avatar = req.body.avatar;
+    const category = req.body.category
+    await addProduct(title,price,description,avatar,category).then((result)=>{
         res.status(201).send(result)
     }).catch((err)=>{
         err.name=''
@@ -27,7 +29,7 @@ route.delete('/:id',async (req,res)=>{
     await deleteProduct(req.params.id).then(data=>{
         res.status(303).redirect('/api/proucts')
     }).catch(err=>{
-        err.name=''
+        err.name='' 
         res.status(405).send(err.toString())
     });
 })

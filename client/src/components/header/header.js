@@ -20,61 +20,39 @@ export class Header extends Component {
         let LoggedInDependent;
         if(this.props.user.isLoggedIn){
             LoggedInDependent = <React.Fragment>
-                <li className="nav-item">
-                    <Link className="nav-link" to='/users/showCartItems'>My Cart</Link>
-                </li>
+                <div className="col-3 col-md-2 col-lg-1">
+                    <Link className="navLink btn" to='/users/showCartItems'>MyCart</Link>
+                </div>
+                <div className="col-3 col-md-2 col-lg-1">
+                    <button className="navLink btn " onClick = {this.logout}>Logout</button>
+                </div>
             </React.Fragment>   
         }
         else{
             LoggedInDependent = <React.Fragment>
-                <li className="nav-item">
-                    <Link className="nav-link" to='/users/login'>Login</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to='/users/signup'>Sign Up</Link>
-                </li>
+                <div className="col-3 col-md-2 col-lg-1">
+                    <Link className="navLink btn " to='/users/login'>Login</Link>
+                </div>
+                <div className="col-3 col-md-2 col-lg-1">
+                    <Link className="navLink btn" to='/users/signup'>SignUp</Link>
+                </div>
             </React.Fragment>
         }
 
-        //if logged in then show username and logout button
-
         
-
-        let showUserName;
-        if(this.props.user.isLoggedIn){
-            showUserName=<React.Fragment  >
-                            
-                                <span className=" mr-sm-2" >Hello! {this.props.user.username} </span>
-                                <button className="btn btn-outline-success my-2 my-sm-0" onClick = {this.logout}>Logout</button>
-                                
-                        </React.Fragment>
-        }
 
         return (
             <React.Fragment>
                 
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <Link className="navbar-brand" to='/'>Ecomerse Website</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item active">
-                                <Link className="nav-link" to='/'>Home </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to='/products'>Products</Link>
-                            </li>
-                            {LoggedInDependent}
-                            <div className=" float-sm-right">
-                                {showUserName}
-                            </div>
-                        </ul>
-                        
+                <nav className="navBar container-fluid">
+                    <div className="row">
+                        <div className="col-12 col-md-4 col-lg-8"><h2 className="navLogo">beAstModeON</h2></div>
+                        <div className="col-3 col-md-2 col-lg-1"><Link className="navLink btn" to='/'>Home </Link></div>
+                        <div className="col-3 col-md-2 col-lg-1"><Link className="navLink btn" to='/products'>Products </Link></div>
+                        {LoggedInDependent}
                     </div>
-                    
                 </nav>
+
             </React.Fragment>
         )
     }

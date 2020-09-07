@@ -1,0 +1,72 @@
+.Products{
+    text-align: center;
+    
+}
+
+.Products .productsContainer .heading{
+    text-align: center;
+    margin:0px;
+    padding:1rem 0px;
+    background-color: #eeeeee;
+    color: #222831;
+}
+
+.Products .productsContainer{
+    text-align: center; 
+    padding :0px;  
+    background-color: #eeeeee;
+}
+
+
+
+.Products .productsContainer .column{
+    
+    text-align: center;
+    padding:0px;
+    
+}
+
+.Products .productsContainer .column .card{
+    margin:2rem auto;
+    background-color: #222831;
+    color:#eeeeee ;
+    border:none;
+    border-radius: 30px;
+}
+.Products .productsContainer .column .card .button{
+    width: 100%;
+    background-color: #00adb5;
+    color: #eeeeee;
+    border: none;
+    border-radius: 20px;
+}
+.Products .productsContainer .column .card .button:hover{
+    color: #222831;
+    background-color: #eeeeee;
+}
+
+
+/*                       Weigth Trainig Products Section                    */
+
+
+.Products .weightProducts {
+    background-color: #222831;
+}
+
+.Products .weightProducts .heading{
+    color : #eeeeee;
+    background-color: #222831;
+}
+
+.Products .weightProducts .column .card{
+    background-color: #eeeeee;
+    color : #222831
+}
+.Products .weightProducts .column .card .button{
+    background-color: #222831;
+    color: #eeeeee;
+}
+.Products .weightProducts .column .card .button:hover{
+    color: #eeeeee;
+    background-color: #00adb5;
+}

@@ -3,6 +3,129 @@
   padding: 0px;
 }
 
-.displayFlex{
+.navBar{
+  /* position: fixed; */
+  background-color: #222831;
+  text-align:center ;
+  color : #eeeeee;
+  /* z-index: 1; */
+  
+
+}
+.navBar .col-12{
+  
+  text-align:center ;
+  padding:0px;
+  /* color: #00adb5; */
+}
+.navBar .navLogo{
+  display: inline-block;
+  text-align:center ;
+  margin:0px;
+  padding : 0.5rem ;
+  height:100%;
+  width: 100%;
+  color: #00adb5;
+}
+
+.navBar .col-3{
+  
+  text-align:center ;
+  padding :  0rem;
+}
+.navBar .navLink{
+  color: #eeeeee;
+  text-align:center ;
+  font-size: 1.2rem;
+  text-decoration: none;
+  width: 100%;
+  padding : 0.75rem ;
+  height:100%;
+  
+}
+
+.navBar .navLink:hover{
+  background-color: #393e46;
+  color: #00adb5;
+}
+
+/* carsousel */
+
+.carouselSection{
+  overflow: hidden;
+  padding:0px;
+  height: auto;
+}
+.carouselSection img{
+  height: 37rem;
+}
+
+/* Products Buy and Return details showCase */
+
+.detailsShowCase{
+  background-color: #eeeeee;
+}
+.detailsShowCase .col-12{
+  padding: 3em 3em;
+  border-bottom: 2px #393e46 solid;
+}
+.detailsShowCase span{
+  color: #00adb5;
+}
+
+/* Exercise Show Case */
+
+.exerciseShowCase{
+ 
+  height:auto;
+}
+.exerciseShowCase img{
+  height:25rem;
+  width:100%;
+  
+}
+.exerciseShowCase .col-12{
+  
+  padding:0px;
+}
+.exerciseShowCase .col-12 .text{
+  position :absolute;
+  top:10%;
+  height: 80%;
+  width:80%;
+  left:10%;
+  right:10%;
+  bottom: 10%;
+  text-align: center;
   display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-color: #393e46;
+  opacity: 0.8;
+  border-radius: 30px;
+}
+.exerciseShowCase .col-12 .heading{
+  
+  color: #eeeeee;
+  
+  margin-bottom: 20px;
+  color: #00adb5;
+  opacity: 1;
+}
+.exerciseShowCase .col-12 p{
+  
+  color: #eeeeee;
+}
+.exerciseShowCase .btn{
+  width:100%;
+  background-color: #00adb5;
+  opacity: 1;
+  border-radius: 20px;
+}
+.exerciseShowCase .container{
+  
+ 
+  padding: 20px;
+  display: inline-block;
+  
 }
