@@ -16,7 +16,9 @@ export class App extends Component {
     constructor(props){
       super(props);
       this.state ={
-        user : {}
+        user : {
+          isLoggedIn : false
+        }
       };
       this.addUser= this.addUser.bind(this)
       this.removeUser =this.removeUser.bind(this)
@@ -85,7 +87,7 @@ export class App extends Component {
             
             <Route exact path='/' component={Home}></Route>
 
-            <Route path='/products' component={Product}></Route>
+            <Route path='/products' component={()=><Product user={this.state.user}></Product>}></Route>
 
             <Route 
               path='/users/showCartItems' 

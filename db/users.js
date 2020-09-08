@@ -64,20 +64,36 @@ async function updatedCartItems(userId,productId){
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
-    const user= users.find({'_id': ObjectID(userId)}).toArray()
-    user.then((data)=>{
-        const query = {'_id':ObjectID(userId)};
-        const newProduct = {
-            id : ObjectID(productId)
-        }
-        const productList = [...data[0].products,newProduct];
-        const newValues={ $set : { products : productList } };
-        users.updateOne(query,newValues,(err,res)=>{
-            if(err)
-            throw err;
+    return await users.find({'_id': ObjectID(userId)}).toArray().then((data)=>{
+
+        // check wheter the item already present or not in the cart
+        let flag = false;
+        const productsArray = data[0].products;
+        productsArray.map((product)=>{
+            if(product.id == productId){
+                flag =true;
+            }    
         })
-    })
-    user.catch(err=>{throw err})
+        // if already exists then throw error
+        if(flag){
+            throw new Error("This product already exists in the cart")
+        }
+        
+        //if not present then add the product to cart
+        else{
+            const query = {'_id':ObjectID(userId)};
+            const newProduct = {
+                id : ObjectID(productId)
+            }
+            const productList = [...data[0].products,newProduct];
+            const newValues={ $set : { products : productList } };
+            users.updateOne(query,newValues,(err,res)=>{
+                if(err)
+                throw err;
+            })
+        }
+        
+    }).catch(err=>{throw err})
 }
 
 
@@ -101,7 +117,7 @@ async function showCartItems(userId){
 
 }
 
-
+// updatedCartItems("5f56909b46dbad31d045bd26","5f56679f8f3e164ec45c82ce")
 
 exports= module.exports={
     authenticateUser,

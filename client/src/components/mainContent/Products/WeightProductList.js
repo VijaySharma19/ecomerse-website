@@ -8,6 +8,7 @@ export class WeightProductList extends Component {
                 return <ProductItem
                     key={product._id}
                     product = {product}
+                    user={this.props.user}
                 />
             }
             else{

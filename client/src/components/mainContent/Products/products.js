@@ -31,19 +31,19 @@ export class Products extends Component {
                 <div className="container-fluid productsContainer">
                     <h1 className="heading">Cardio Products</h1>
                     <div className="row">
-                        <CardioProductList productList={this.state.productList}/>
+                        <CardioProductList user={this.props.user} productList={this.state.productList}/>
                     </div>
                 </div>
                 <div className="container-fluid productsContainer weightProducts">
                     <h1 className="heading">Weight Lifting Products</h1>
                     <div className="row">
-                        <WeightProductList productList={this.state.productList}/>
+                        <WeightProductList user={this.props.user} productList={this.state.productList}/>
                     </div>
                 </div>
                 <div className="container-fluid productsContainer">
                     <h1 className="heading">Kick Boxing Products</h1>
                     <div className="row">
-                        <KickBoxingProductList productList={this.state.productList}/>
+                        <KickBoxingProductList user={this.props.user} productList={this.state.productList}/>
                     </div>
                 </div>
             </div>
