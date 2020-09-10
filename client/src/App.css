@@ -129,3 +129,35 @@
   display: inline-block;
   
 }
+
+/* footer */
+.footer{
+  text-align: center;
+  padding: 0px;
+  background-color: #222831;
+  color:#eeeeee;
+}
+
+.footer h3{
+  text-align: center;
+  color : #00adb5;
+  margin:0px;
+  padding: 1rem;
+}
+
+.footer .container-fluid{
+  text-align: center;
+}
+
+.footer .container-fluid .item{
+  text-align: center;
+  padding: 0.5rem 0px;
+}
+.footer .container-fluid .item h5{
+  display: inline-block;
+}
+
+.footer .container-fluid .item a{
+  text-decoration: none;
+  color : #00adb5
+}
