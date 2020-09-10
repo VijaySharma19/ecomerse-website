@@ -49,7 +49,9 @@ route.post('/signup',async(req,res)=>{
     const emailId= req.body.emailId;
     const password= req.body.password;
     const contact= req.body.contact;
-    await createUser(username,emailId,contact,password).then(data=>{
+    const address = req.body.address
+    const avatar = req.body.avatar
+    await createUser(username,emailId,contact,password,address,avatar).then(data=>{
         const result ={
             id: data.ops[0]._id,
             username: data.ops[0].username,

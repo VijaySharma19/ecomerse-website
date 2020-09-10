@@ -32,7 +32,7 @@ route.delete('/:id',async (req,res)=>{
         err.name='' 
         res.status(405).send(err.toString())
     });
-})
+}) 
 
 exports=module.exports={
     route

@@ -5,22 +5,31 @@ const MongoUrl= "mongodb://localhost:27017";
 const dbName = "ecomerseDb";
 
 
-async function createUser(username,emailId,contactNo,password){
+async function createUser(username,emailId,contactNo,password,address,avatar){
     const client = await MongoClient.connect(MongoUrl);
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
-    const user = await users.insertOne({
-        username : username,
-        emailId : emailId,
-        contactNo : contactNo,
-        password : password,
-        products : [
+    return await users.findOne({"emailId": emailId }).then((res)=>{
+        if(res==null){
+            const user =  users.insertOne({
+                username : username,
+                emailId : emailId,
+                contactNo : contactNo,
+                password : password,
+                products : [],
+                address : address,
+                avatar : avatar
+            })
+        
+            return user;
+        }
+        else{
+            throw new Error("User with this Email Id already exists. Please either Login Or try again using another Email Id")
+        }
+    }).catch(err=>{throw err})
 
-        ]
-    })
-
-    return user;
+    
 
 }
 
@@ -117,7 +126,7 @@ async function showCartItems(userId){
 
 }
 
-// updatedCartItems("5f56909b46dbad31d045bd26","5f56679f8f3e164ec45c82ce")
+
 
 exports= module.exports={
     authenticateUser,
