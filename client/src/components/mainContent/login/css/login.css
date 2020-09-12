@@ -39,6 +39,8 @@
     color: #eeeeee;
     background: none;
     border: none;
+    border-radius: 0px;
+    border-bottom: 1px #00adb5 solid;
 }
 .login-page .login-wrapper .form .item input::placeholder{
     color:#eeeeee;
@@ -54,4 +56,7 @@
     padding : 0.25rem 0px;
     color: #eeeeee;
     border-radius: 20px;
+}
+.login-page .login-wrapper .form .btn:hover{
+    background-color: rgba(0,0,0,0.5);
 }

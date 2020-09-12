@@ -1,0 +1,52 @@
+.signup-page{
+    padding: 0px;
+    margin: 0px;
+    background-image: url("../img/signup1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.signup-page .row{
+    margin: 0px;
+    padding: 0px;
+}
+.signup-page .row .col-12{
+    padding: 0px;
+}
+
+.signup-page .signup-wrapper{
+    
+    background-color: rgba(0, 0,0, 0.5);
+    color:#eeeeee;
+    border-radius: 40px;
+}
+
+.signup-page .signup-wrapper .heading{ 
+    text-align: center;
+    color:#eeeeee;
+}
+.signup-page .signup-wrapper .form .form-control{
+    color:#eeeeee;
+    background:none;
+    border:none;
+    border-bottom:1px #eeeeee solid;
+    outline:none;
+
+}
+.signup-page .signup-wrapper .form .form-control:hover{
+    border-bottom:1px #00adb5 solid;
+}
+.signup-page .signup-wrapper .form span{
+    display: block;
+    text-align: center;
+}
+
+.signup-page .signup-wrapper .form .btn{ 
+    background-color: #00adb5;
+    color:#eeeeee;
+    border-radius: 20px;    
+}
+.signup-page .signup-wrapper .form .btn:hover{
+    background-color: rgba(0, 0,0, 0.5);
+}

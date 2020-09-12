@@ -34,7 +34,7 @@ export class Header extends Component {
                     <Link className="navLink btn " to='/users/login'>Login</Link>
                 </div>
                 <div className="col-3 col-md-2 col-lg-1">
-                    <Link className="navLink btn" to='/users/signup'>SignUp</Link>
+                    <Link className="navLink btn" to='/users/signup'>Register</Link>
                 </div>
             </React.Fragment>
         }

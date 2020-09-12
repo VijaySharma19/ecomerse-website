@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import {Message} from "../alertMessage/Message.js"
+import { Link } from "react-router-dom"
+import "./css/signup.css"
 
 import axios from 'axios';
-
 
 export class SignUp extends Component {
 
@@ -119,67 +120,80 @@ export class SignUp extends Component {
     render() {
         return (
             <React.Fragment>
-                <div>
-                    <h1>Sign Up</h1>
-                    <p>{this.state.error}</p>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Name : 
-                            <input 
-                                required
-                                type="text"
-                                name="username"
-                                value={this.state.username}
-                                placeholder="Enter User Name"
-                                onChange={this.handleChange}
-                            /><br />
-                        </label>
-                        <label>
-                            Email Id : 
-                            <input 
-                                required
-                                type="email"
-                                name="emailId"
-                                placeholder="Enter Email Id"
-                                value={this.state.emailId}
-                                onChange={this.handleChange}
-                            /><br />
-                        </label>
-                        <label>
-                            Contact No : 
-                            <input 
-                                required
-                                type="text"
-                                name="contactNo"
-                                placeholder="Enter Contact Number"
-                                value={this.state.contactNo}
-                                onChange={this.handleChange}
-                            /><br />
-                        </label>
-                        <label>
-                            Password : 
-                            <input 
-                                required
-                                type="password"
-                                name="password"
-                                placeholder="Enter Password"
-                                value={this.state.password}
-                                onChange={this.handleChange}
-                            /><br />
-                        </label>
-                        <label>
-                            Confirm Password : 
-                            <input 
-                                required
-                                type="password"
-                                name="confirmPassword"
-                                placeholder="Confirm your Password"
-                                value={this.state.confirmPassword}
-                                onChange={this.handleChange}
-                            /><br />
-                        </label>
-                        <button type="submit" >Register</button>
-                    </form>
+                <div className="container-fluid signup-page" >
+                    <div className= "row pt-5 pb-5  ">
+                        <div className="col-lg-5 col-md-7 col-sm-9 col-12 mx-auto">
+                            <div className="signup-wrapper card card-body">
+                                <h1 className="heading">Register</h1>
+                                
+                                <form className="form" onSubmit={this.handleSubmit}>
+                                    <div className="item form-group">
+                                        <label>Name</label>
+                                        <input
+                                            required
+                                            className="form-control"
+                                            type="text"
+                                            name="username"
+                                            value={this.state.username}
+                                            placeholder="Enter User Name"
+                                            onChange={this.handleChange}
+                                        ></input>
+                                    </div>
+                                    <div className="item form-group">
+                                        <label>Email Id</label>
+                                        <input
+                                            required
+                                            className="form-control"
+                                            type="email"
+                                            name="emailId"
+                                            placeholder="Enter Email Id"
+                                            value={this.state.emailId}
+                                            onChange={this.handleChange}
+                                        ></input>
+                                    </div>
+                                    <div className="item form-group">
+                                        <label>Contact No</label>
+                                        <input
+                                             required
+                                             className="form-control"
+                                             type="text"
+                                             name="contactNo"
+                                             placeholder="Enter Contact Number"
+                                             value={this.state.contactNo}
+                                             onChange={this.handleChange}
+                                        ></input>
+                                    </div>
+                                    <div className="item form-group">
+                                        <label>Password</label>
+                                        <input
+                                            required
+                                            className="form-control"
+                                            type="password"
+                                            name="password"
+                                            placeholder="Enter Password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange}
+                                        ></input>
+                                    </div>
+                                    <div className="item form-group">
+                                        <label>Confirm Password</label>
+                                        <input
+                                             required
+                                             className="form-control"
+                                             type="password"
+                                             name="confirmPassword"
+                                             placeholder="Confirm your Password"
+                                             value={this.state.confirmPassword}
+                                             onChange={this.handleChange}
+                                        ></input>
+                                    </div>
+                                    <button  className="item btn btn-block" type="submit" >Register</button>
+                                    <span className="item">----or----</span>
+                                    <Link  className="item btn btn-block" to="/users/login" style={{marginBottom:"1rem"}}>Already have a Account ? </Link>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <Message
                     show={this.state.showMessage}
