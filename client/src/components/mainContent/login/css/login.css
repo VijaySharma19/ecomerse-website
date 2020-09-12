@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center ;
-    height: 31.6rem;
+    height: 32.5rem;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -24,7 +24,7 @@
 }
 .login-page .login-wrapper .form {
     width: 100%;
-    padding: 0rem 3rem;
+    padding: 0rem 2rem;
 }
 .login-page .login-wrapper .form .item{
    display: block;
