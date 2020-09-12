@@ -1,0 +1,57 @@
+.login-page{
+    padding:0px;
+    background-image: url("../img/loginImg.jpg")  ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center ;
+    height: 31.6rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    color:#eeeeee;
+}
+.login-page .login-wrapper{
+    display: inline-block;
+    background: rgba(0,0,0,0.5);
+    border-radius: 40px;
+    padding: 1rem;
+}
+.login-page .login-wrapper .heading{
+    text-align: center;
+    margin: 0px;
+    padding: 0.5rem 3rem;
+}
+.login-page .login-wrapper .form {
+    width: 100%;
+    padding: 0rem 3rem;
+}
+.login-page .login-wrapper .form .item{
+   display: block;
+   margin: 0px;
+   width: 100%;
+   margin : 0.75rem 0px;
+}
+
+.login-page .login-wrapper .form .item input{
+    margin-left:1rem;
+    outline: none;
+    color: #eeeeee;
+    background: none;
+    border: none;
+}
+.login-page .login-wrapper .form .item input::placeholder{
+    color:#eeeeee;
+    opacity: 0.6;
+}
+.login-page .login-wrapper .form .item .icon{
+    margin-left: 0.5rem ;
+    font-size: 1.3rem;
+    color:#00adb5;
+}
+.login-page .login-wrapper .form .btn{
+    background-color: #00adb5;
+    padding : 0.25rem 0px;
+    color: #eeeeee;
+    border-radius: 20px;
+}

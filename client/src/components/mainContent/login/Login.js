@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
+import { Message } from "../alertMessage/Message.js"
+
+import { FaUserCircle,FaLock } from "react-icons/fa"
+
 import axios from 'axios'
 
+import "./css/login.css"
 
 
 
@@ -12,12 +18,19 @@ export class Login extends Component {
         this.state = {
             emailId : '',
             password : '',
-            error : ''
+            message : '',
+            showMessage : false
                 
         }
         this.handleChange = this.handleChange.bind(this);
         
-        this.login = this.login.bind(this)
+        this.login = this.login.bind(this) 
+
+        this.onHide = this.onHide.bind(this)
+    }
+
+    onHide=(e)=>{
+        this.setState({message : "", showMessage:false,email:'',password:''})
     }
 
     handleChange=(e)=>{
@@ -50,7 +63,7 @@ export class Login extends Component {
                 }
 
         }).catch(err=>{
-            this.setState({error : err.response.data})
+            this.setState({message : err.response.data,showMessage : true})
         })
         
          
@@ -64,32 +77,50 @@ export class Login extends Component {
         
         
             return (
-                <div>
-                    <h2 style={{textAlign:"center"}}>Login</h2>
-    
-                    <div style={{textAlign:"center"}}>
-                        <p>{this.state.error}</p>
-                        <form onSubmit={this.login}>
-                            <input
-                                required
-                                type="email"
-                                name = "emailId"
-                                placeholder="Enter your Email Id"
-                                value={this.state.emailId}
-                                onChange= {this.handleChange}
-                            />
-                            <input
-                                required
-                                type="password"
-                                name="password"
-                                placeholder="Enter your Password"
-                                value={this.state.password}
-                                onChange= {this.handleChange}
-                            />
-                            <button type="submit"  > Login </button>
-                        </form>
+                <React.Fragment>
+                    <div className="login-page container-fluid">
+                        <div className="login-wrapper">
+                                        <h2 className="heading">Welcome Back !</h2>
+                        
+                                        <div style={{display:"inline-block" ,width:"100%"}} >
+                                            <form className="form" onSubmit={this.login}>
+                                                <label className="item" for="emailId"><FaUserCircle className="icon"></FaUserCircle>
+                                                    <input 
+                                                        type="email"
+                                                        required
+                                                        name = "emailId"
+                                                        id="emailId"
+                                                        placeholder="Enter your Email Id"
+                                                        value={this.state.emailId}
+                                                        onChange= {this.handleChange}
+                                                        
+                                                    />
+                                                </label>
+                                                <label className="item"  for="password"><FaLock className="icon"></FaLock>
+                                                    <input
+                                                        required
+                                                        id="password"
+                                                        type="password"
+                                                        name="password"
+                                                        placeholder="Enter your Password"
+                                                        value={this.state.password}
+                                                        onChange= {this.handleChange}
+                                                        
+                                                    />
+                                                </label>
+                                                <button className="item btn" type="submit"  > Login </button>
+                                                <span className="item" style={{textAlign:"center"}}>-----or-----</span>
+                                                <Link className="item btn"  to="/users/signup" >Create New Account</Link>
+                                            </form>
+                                        </div>
+                            </div>
                     </div>
-                </div> 
+                    <Message
+                        show={this.state.showMessage}
+                        onHide={this.onHide}
+                        message={this.state.message}
+                    ></Message>
+                </React.Fragment>
             )
         }
 

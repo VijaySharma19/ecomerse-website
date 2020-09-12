@@ -145,19 +145,22 @@
   padding: 1rem;
 }
 
-.footer .container-fluid{
-  text-align: center;
-}
+
 
 .footer .container-fluid .item{
   text-align: center;
-  padding: 0.5rem 0px;
-}
-.footer .container-fluid .item h5{
-  display: inline-block;
+  padding: 0.5rem 1rem;
 }
 
 .footer .container-fluid .item a{
+  text-align: center;
   text-decoration: none;
-  color : #00adb5
+  padding: 0.5rem 1rem;
+  color : #eeeeee;
+  border: 2px #eeee solid;
+  border-radius: 20px;
+}
+
+.footer .container-fluid .item a .icon{
+  font-size: 1.5rem;
 }
