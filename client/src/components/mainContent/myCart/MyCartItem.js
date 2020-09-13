@@ -10,6 +10,7 @@ export class MyCartItem extends Component {
 
     removeFromCart = ()=>{
         this.props.updateProductList(this.props.product._id)
+        
         axios.post("/users/removeFromCart",{
             userId : this.props.user.id,
             productId : this.props.product._id

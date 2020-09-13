@@ -9,6 +9,7 @@ export class MyCartList extends Component {
                     product = {product}
                     user={this.props.user}
                     updateProductList={this.props.updateProductList}
+                   
                 />
             }))
     }
