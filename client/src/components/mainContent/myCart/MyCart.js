@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import MyCartList from "./MyCartList"
+import  "./css/myCart.css"
 
 export class MyCart extends Component {
 
@@ -35,13 +36,18 @@ export class MyCart extends Component {
     }
 
     componentDidMount(){
-        axios.post('/users/showCartItems',{
-            userId : this.props.user.id
-        }).then(res=>{
-            this.setState({productList : res.data})
-            this.calcAmount()
-        }).catch(err=>console.log(err))
-        // console.log(this.props.user.id)
+        if(this.props.user.isLoggedIn){
+            axios.post('/users/showCartItems',{
+                userId : this.props.user.id
+            }).then(res=>{
+                this.setState({productList : res.data})
+                this.calcAmount()
+            }).catch(err=>console.log(err))
+            // console.log(this.props.user.id)
+        }
+        else{
+            this.props.history.push("/")
+        }
     }
 
     render() {
@@ -50,7 +56,6 @@ export class MyCart extends Component {
         if(this.state.productList.length>0){
             Products =  <div className="container-fluid productsContainer">
                             <h1 className="heading">My Cart</h1>
-                            <h4 className="heading">Total Amount : Rs. {this.state.totalAmount}</h4>
                             <div className="row">
                                 <MyCartList 
                                     user={this.props.user} 
@@ -69,8 +74,21 @@ export class MyCart extends Component {
 
 
         return (
-            <div className="Products">
-                {Products}
+            <div className="myCart-page">
+                <div className="showcase row container-fluid ">
+                    <div className="col-12 col-sm-6 showcase-wrapper mx-auto">
+                        <img className="item img" src={require("./img/avatar.png")} alt="avatar" />
+                        <h2 className="item">Hello! {this.props.user.username} </h2>
+                        <h5 className="item">{this.props.user.emailId}</h5>
+                        <h5 className="item">{this.props.user.contactNo}</h5>
+                    </div>
+                    <div className="col-12 amount-wrapper">
+                        <h2 className="item">Total Amount = Rs. {this.state.totalAmount}</h2>
+                    </div>
+                </div>
+                <div className="Products">
+                    {Products}
+                </div>
             </div>
         )
     }

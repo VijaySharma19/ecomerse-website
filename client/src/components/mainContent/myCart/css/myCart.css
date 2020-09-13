@@ -1,0 +1,40 @@
+.showcase{
+    text-align: center;
+    margin:0px;
+    padding:0px;
+    background-image: url("../img/showcase.jpg");
+    background-position: center;
+    background-size:cover ;
+    background-repeat: no-repeat;
+    color: #eeeeee;
+}
+.showcase .showcase-wrapper{
+    text-align: center;
+    padding:0px;
+    background-color: rgba(0,0,0,0.5);
+    margin:2rem;
+    padding:1rem 0px;
+    border-radius:20px ;
+}
+.showcase .showcase-wrapper .item{
+    text-align: center;
+    margin: 0px;
+    padding: 0.25rem;
+}
+.showcase .showcase-wrapper .img{
+    height: 6rem;
+    width:6rem;
+    border-radius: 50%;
+}
+.showcase .amount-wrapper{
+    text-align: center;
+    padding:0px;
+    background-color: rgba(0,0,0,0.5);
+}
+.showcase .amount-wrapper .item{
+    text-align: center;
+    margin: 0px;
+    padding:0.5rem;
+    color: #00adb5;
+}
+

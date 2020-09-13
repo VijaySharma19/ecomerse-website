@@ -9,7 +9,7 @@ import Product from './components/mainContent/Products/products'
 import MyCart from './components/mainContent/myCart/MyCart'
 import Login from './components/mainContent/login/Login'
 import SignUp from './components/mainContent/signup/SignUp'
-// import Footer from "./components/footer/footer"
+import Footer from "./components/footer/footer"
 
 import axios from 'axios';
 
@@ -93,7 +93,7 @@ export class App extends Component {
 
             <Route 
               path='/users/showCartItems' 
-              component={()=><MyCart user={this.state.user}></MyCart>}
+              component={(props)=><MyCart {...props} user={this.state.user}></MyCart>}
             ></Route>
             <Route 
               path='/users/login' 
@@ -113,9 +113,9 @@ export class App extends Component {
             ></Route>
           </Switch>
           
-          {/* <Footer>
+          <Footer>
             
-          </Footer> */}
+          </Footer>
  
         </Router>
       </div>
