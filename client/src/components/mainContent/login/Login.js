@@ -84,7 +84,7 @@ export class Login extends Component {
                         
                                         <div style={{display:"inline-block" ,width:"100%"}} >
                                             <form className="form" onSubmit={this.login}>
-                                                <label className="item" for="emailId"><FaUserCircle className="icon"></FaUserCircle>
+                                                <label className="item" ><FaUserCircle className="icon"></FaUserCircle>
                                                     <input 
                                                         type="email"
                                                         required
@@ -96,7 +96,7 @@ export class Login extends Component {
                                                         
                                                     />
                                                 </label>
-                                                <label className="item"  for="password"><FaLock className="icon"></FaLock>
+                                                <label className="item"  ><FaLock className="icon"></FaLock>
                                                     <input
                                                         required
                                                         id="password"

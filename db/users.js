@@ -126,6 +126,26 @@ async function showCartItems(userId){
 
 }
 
+async function removeItemsFromCart(userId,productId){
+    const client = await MongoClient.connect(MongoUrl);
+    const ecomerseDb = await client.db(dbName);
+    const users = await ecomerseDb.collection('users');
+
+    return await users.findOne({"_id":ObjectID(userId)}).then(user=>{
+        let updatedProducts =user.products;
+        updatedProducts = updatedProducts.filter(product => product.id != productId);
+
+        const query = {'_id':ObjectID(userId)};
+        const newValues={ $set : { products : updatedProducts } };
+        users.updateOne(query,newValues,(err,res)=>{
+            if(err)
+            throw err;
+        })
+    }).catch(err=>{throw err}) 
+
+}
+
+
 
 
 exports= module.exports={
@@ -133,5 +153,6 @@ exports= module.exports={
     createUser,
     updatedCartItems,
     showCartItems,
-    getUserById
+    getUserById,
+    removeItemsFromCart
 }

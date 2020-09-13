@@ -7,6 +7,8 @@ export class MyCartList extends Component {
                 return <MyCartItem
                     key={product._id}
                     product = {product}
+                    user={this.props.user}
+                    updateProductList={this.props.updateProductList}
                 />
             }))
     }

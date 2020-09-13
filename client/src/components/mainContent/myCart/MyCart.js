@@ -9,6 +9,12 @@ export class MyCart extends Component {
         this.state ={
             productList : []
         }
+        this.updateProductList = this.updateProductList.bind(this)
+    }
+    updateProductList=(productId)=>{
+        let updatedList = this.state.productList; 
+        updatedList=updatedList.filter(product=>product._id !== productId)
+        this.setState({productList : updatedList})
     }
 
     componentDidMount(){
@@ -24,19 +30,26 @@ export class MyCart extends Component {
         let Products ;
        
         if(this.state.productList.length>0){
-            Products =  <div className="displayFlex ProductsContainer">
-                            <MyCartList productList={this.state.productList}/>
+            Products =  <div className="container-fluid productsContainer">
+                            <h1 className="heading">My Cart</h1>
+                            <div className="row">
+                                <MyCartList 
+                                    user={this.props.user} 
+                                    productList={this.state.productList}
+                                    updateProductList={this.updateProductList}
+                                />
+                            </div>
                         </div>
         }
         else{
-            Products = <div>
+            Products = <div style={{textAlign:"center" , margin:"2rem"}}>
                 <h1>No Product In The Cart</h1>
             </div>
         }
 
 
         return (
-            <div>
+            <div className="Products">
                 {Products}
             </div>
         )

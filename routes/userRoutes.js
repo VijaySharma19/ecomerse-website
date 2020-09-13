@@ -1,5 +1,5 @@
 const route = require("express").Router()
-const { createUser,authenticateUser,updatedCartItems,showCartItems,getUserById } = require("../db/users")
+const { createUser,authenticateUser,updatedCartItems,showCartItems,getUserById,removeItemsFromCart } = require("../db/users")
 
 route.get("/",async(req,res)=>{
     if(req.session.userId){
@@ -82,6 +82,14 @@ route.post('/showCartItems',async (req,res)=>{
         res.status(400).send(err.toString())
     })
 }) 
+route.post('/removeFromCart',async (req,res)=>{
+    await removeItemsFromCart(req.body.userId,req.body.productId).then((result)=>{
+        res.status(201).send("Removed Successfully")
+    }).catch((err)=>{
+        err.name='';
+        res.status(400).send(err.toString())
+    })
+})
 
 exports= module.exports={
     route
