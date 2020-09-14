@@ -15,17 +15,18 @@ app.use(session({
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-//serve static assests if in production
-if(process.env.NODE_ENV==='production'){
-    //set static folder
-    app.use(express.static('client/bluid'))
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
-    })
-}
-
 app.use('/products',require("./routes/productRoutes").route)
 app.use('/users',require("./routes/userRoutes").route)
+
+//server static assets if in production
+if (process.env.NODE_ENV === "production") {
+    //set static folder
+    app.use(express.static("client/build"));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
+
 
 const PORT = process.env.PORT || 3232;
 
