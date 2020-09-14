@@ -1,5 +1,5 @@
 const {MongoClient , ObjectID} = require("mongodb");
-const MongoUrl= "mongodb://localhost:27017";
+const MongoUrl= process.env.DATABASE_URI;
 const dbName = "ecomerseDb";
 
 async function addProduct(title,price,despcription,avatar,category){

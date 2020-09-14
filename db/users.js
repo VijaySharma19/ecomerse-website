@@ -1,7 +1,7 @@
 const {MongoClient , ObjectID} = require("mongodb");
 const { getProductById } = require('./products')
 
-const MongoUrl= "mongodb://localhost:27017";
+const MongoUrl= process.env.DATABASE_URI;
 const dbName = "ecomerseDb";
 
 
