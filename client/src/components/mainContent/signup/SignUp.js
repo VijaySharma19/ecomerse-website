@@ -27,9 +27,31 @@ export class SignUp extends Component {
         this.onHide =this.onHide.bind(this)
         this.checkPassword = this.checkPassword.bind(this)
         this.validateUsername =this.validateUsername.bind(this)
+        this.validatePassword = this.validatePassword.bind(this)
     }
     onHide= ()=>{
         this.setState({message : '',showMessage:false})
+    }
+
+    validatePassword=()=> 
+    { 
+        let inputtxt =this.state.password;
+        var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if(passw.test(inputtxt)) 
+        { 
+            return true;
+        }
+        else
+        {
+            this.setState({
+                password: '',
+                confirmPassword : '',
+                message: ' Password should be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter',
+                showMessage:true
+            }) 
+            
+            return false;
+        }
     }
 
     validateUsername = ()=>{
@@ -92,7 +114,7 @@ export class SignUp extends Component {
     }
     handleSubmit=(e)=>{
         e.preventDefault()
-        if(this.phonenumberValidate(this.state.contactNo)&&this.checkPassword()&&this.validateUsername()){
+        if(this.phonenumberValidate(this.state.contactNo)&&this.checkPassword()&&this.validatePassword()){
             axios.post('/users/signup',{
                 username: this.state.username,
                 emailId : this.state.emailId,
@@ -108,8 +130,19 @@ export class SignUp extends Component {
 
                 //set state.user
                 this.props.addUser(id,username,emailId,contactNo,products,avatar)
+                this.props.history.push("/")
+            }).catch(err=>{
+                this.setState({
+                    username: '',
+                    contactNo: "",
+                    password : '',
+                    confirmPassword : '',
+                    message: err.response.data,
+                    showMessage : true
+                })
+                
             })
-            this.props.history.push("/")
+            
         }
         else{
             return
