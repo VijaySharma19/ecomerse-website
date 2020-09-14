@@ -8,7 +8,7 @@ const dbName = "ecomerseDb";
 
 
 async function createUser(username,emailId,contactNo,password,address,avatar){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
@@ -36,7 +36,7 @@ async function createUser(username,emailId,contactNo,password,address,avatar){
 }
 
 async function getUserById (id){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
     
@@ -45,7 +45,7 @@ async function getUserById (id){
 }
 
 async function authenticateUser(emailId,password){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
@@ -71,7 +71,7 @@ async function authenticateUser(emailId,password){
 }
 
 async function updatedCartItems(userId,productId){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
@@ -110,7 +110,7 @@ async function updatedCartItems(userId,productId){
 
 
 async function deleteAllUsers(){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
     await users.deleteMany()
@@ -118,7 +118,7 @@ async function deleteAllUsers(){
 }
 
 async function showCartItems(userId){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 
@@ -129,7 +129,7 @@ async function showCartItems(userId){
 }
 
 async function removeItemsFromCart(userId,productId){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const users = await ecomerseDb.collection('users');
 

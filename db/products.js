@@ -5,7 +5,7 @@ const MongoUrl= process.env.DATABASE_URI;
 const dbName = "ecomerseDb";
 
 async function addProduct(title,price,despcription,avatar,category){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const products = await ecomerseDb.collection('products');
 
@@ -20,7 +20,7 @@ async function addProduct(title,price,despcription,avatar,category){
 }
 
 async function findAllProducts(){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const products = await ecomerseDb.collection('products');
 
@@ -30,7 +30,7 @@ async function findAllProducts(){
 
 
 async function deleteProduct(id){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const products = await ecomerseDb.collection('products');
 
@@ -39,7 +39,7 @@ async function deleteProduct(id){
 }
 
 async function getProductById (idArray){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const products = await ecomerseDb.collection('products');
     let outputArray = [];
@@ -55,7 +55,7 @@ async function getProductById (idArray){
 }
 
 async function deleteAllProducts(){
-    const client = await MongoClient.connect(MongoUrl);
+    const client = await MongoClient.connect(MongoUrl, { useNewUrlParser: true });
     const ecomerseDb = await client.db(dbName);
     const products = await ecomerseDb.collection('products');
 
