@@ -1,4 +1,6 @@
 const {MongoClient , ObjectID} = require("mongodb");
+require('dotenv').config()
+
 const MongoUrl= process.env.DATABASE_URI;
 const dbName = "ecomerseDb";
 
