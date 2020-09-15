@@ -3,7 +3,7 @@ const { getProductById } = require('./products')
 
 require('dotenv').config()
 
-const MongoUrl= process.env.DATABASE_URI;
+const MongoUrl=  "mongodb+srv://Vj:vj12345@cluster0.r3wgc.mongodb.net/ecomerseDb?retryWrites=true&w=majority";
 const dbName = "ecomerseDb";
 
 
