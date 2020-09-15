@@ -29,19 +29,19 @@ export class Products extends Component {
         return (
             <div className="Products ">
                 <div className="container-fluid productsContainer">
-                    <h1 className="heading">Cardio Products</h1>
+                    <h1 className="heading">Cardio </h1>
                     <div className="row">
                         <CardioProductList user={this.props.user} productList={this.state.productList}/>
                     </div>
                 </div>
                 <div className="container-fluid productsContainer weightProducts">
-                    <h1 className="heading">Weight Lifting Products</h1>
+                    <h1 className="heading">Strength </h1>
                     <div className="row">
                         <WeightProductList user={this.props.user} productList={this.state.productList}/>
                     </div>
                 </div>
                 <div className="container-fluid productsContainer">
-                    <h1 className="heading">Kick Boxing Products</h1>
+                    <h1 className="heading">Kick Boxing </h1>
                     <div className="row">
                         <KickBoxingProductList user={this.props.user} productList={this.state.productList}/>
                     </div>

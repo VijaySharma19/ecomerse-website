@@ -4,7 +4,7 @@ import ProductItem from './productItem'
 export class WeightProductList extends Component {
     render() {
         return (this.props.productList.map((product)=>{
-            if(product.category==="Weight"){
+            if(product.category==="Strength"){
                 return <ProductItem
                     key={product._id}
                     product = {product}
