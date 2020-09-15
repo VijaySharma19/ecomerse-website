@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-import config from "./config"
+
 
 
 const session = require("express-session")
@@ -27,10 +27,9 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
-const { PORT } =config
 
-const port = PORT  || 3232;
+const PORT = process.env.PORT || 3232;
 
-app.listen(port,()=>{
+app.listen(PORT,()=>{
     console.log(`server started at http://localhost:${PORT}`)
 })

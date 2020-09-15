@@ -1,9 +1,7 @@
 const {MongoClient , ObjectID} = require("mongodb");
-import config from "../config"
 
-const { MONGO_URI } =config
 
-const MongoUrl= MONGO_URI;
+const MongoUrl=  "mongodb+srv://Vj:vj12345@cluster0.r3wgc.mongodb.net/ecomerseDb?retryWrites=true&w=majority";
 const dbName = "ecomerseDb";
 
 async function addProduct(title,price,despcription,avatar,category){

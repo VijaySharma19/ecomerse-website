@@ -1,11 +1,9 @@
 const {MongoClient , ObjectID} = require("mongodb");
 const { getProductById } = require('./products')
 
-import config from "../config"
 
-const { MONGO_URI } =config
 
-const MongoUrl= MONGO_URI;
+const MongoUrl=  "mongodb+srv://Vj:vj12345@cluster0.r3wgc.mongodb.net/ecomerseDb?retryWrites=true&w=majority";
 const dbName = "ecomerseDb";
 
 
