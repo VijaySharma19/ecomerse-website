@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+import config from "./config"
 
-require('dotenv').config()
 
 const session = require("express-session")
 app.use(session({
@@ -27,9 +27,10 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
+const { PORT } =config
 
-const PORT = process.env.PORT || 3232;
+const port = PORT  || 3232;
 
-app.listen(PORT,()=>{
+app.listen(port,()=>{
     console.log(`server started at http://localhost:${PORT}`)
 })

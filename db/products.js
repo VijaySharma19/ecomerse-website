@@ -1,7 +1,9 @@
 const {MongoClient , ObjectID} = require("mongodb");
-require('dotenv').config()
+import config from "../config"
 
-const MongoUrl=  "mongodb+srv://Vj:vj12345@cluster0.r3wgc.mongodb.net/ecomerseDb?retryWrites=true&w=majority";
+const { MONGO_URI } =config
+
+const MongoUrl= MONGO_URI;
 const dbName = "ecomerseDb";
 
 async function addProduct(title,price,despcription,avatar,category){
